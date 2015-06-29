@@ -60,3 +60,8 @@
     state: started
   when: "(ansible_distribution_version|version_compare(12.04, '=') and reboot_result|changed)
       or (ansible_distribution_version|version_compare(13.10, '=') and cgroup_lite_result|changed)"
+
+- name: Fix virtualbox kernel module
+  sudo: true
+  template: src=modules dest=/etc/modules
+  when: "kernel_result|changed or kernel_result|success"
