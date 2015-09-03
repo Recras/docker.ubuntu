@@ -1,6 +1,8 @@
 docker_ubuntu
 ========
 
+[![Build Status](https://travis-ci.org/angstwad/docker.ubuntu.svg)](https://travis-ci.org/angstwad/docker.ubuntu)
+
 Installs Docker on a version higher than Ubuntu 12.04.
 This role differs from other roles in that it specifically follows docker.io installation instructions for each Ubuntu version, 12.04 or 13.04+.
 
@@ -67,14 +69,21 @@ apt_repository: deb https://get.docker.com/ubuntu docker main
 #  -H tcp://0.0.0.0:2375
 #  --log-level=debug
 docker_opts: ""
-# Versions for the python packages that are installed installed
+# List of users to be added to 'docker' system group (disabled by default)
+# SECURITY WARNING: 
+# Be aware that granted users can easily get full root access on the docker host system!
+docker_group_members: []
+# Versions for the python packages that are installed
 pip_version_pip: latest
 pip_version_setuptools: latest
 pip_version_docker_py: latest
+pip_version_docker_compose: latest
 
 # If this variable is set to true kernel updates and host restarts are permitted.
 # Warning: Use with caution in production environments.
 kernel_update_and_reboot_permitted: no
+# Set to 'yes' or 'true' to enable updates (sets 'latest' in apt module)
+update_docker_package: no
 # Change these to 'present' if you're running Ubuntu 12.04-13.10 and are fine with less-than-latest packages
 kernel_pkg_state: latest
 cgroup_lite_pkg_state: latest
