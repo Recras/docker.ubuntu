@@ -2,6 +2,5 @@
 
 _python_packages:
   - python-dev
-  - python-pip
 
 _pip_executable: pip
